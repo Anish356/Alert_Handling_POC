@@ -257,7 +257,7 @@ Example:
   {
     "customer_name": "LBL",
     "env": "PROD",
-    "host": "gcp-lblcsw-sn86cs.cloud.eu"
+    "host": "gcp-lblcsw-sn8cs.cloud.eu"
   },
   {
     "customer_name": "HBI",
@@ -291,19 +291,11 @@ Supported customer environments include:
 
 | Customer | Environment | Host |
 |---|---|---|
-| LBL | PROD | gcp-lblcsw-sn86cs.cloud.eu |
-| BRD | PROD | gcp-brdooiv-p08.cloud.com |
-| HBI | PROD | gcp-hbi-prod.cloud.com |
-| WASL | PROD | gcp-wasl-prod.cloud.com |
-| BAMC | PROD | gcp-bamc-prod.cloud.com |
-| SJ29 | PROD | syg-sj29cib.cloud.com |
-| ITFX | PROD | gcp-itfx-prod.cloud.com |
-| BLDO | PROD | gcp-bldoak.cust.com |
-| ICJ1 | PROD | gcp-icj1.cloud.com |
-| G020 | PROD | gcp-g020.cloud.com |
-| EK | PROD | gcp-ek-prod.cloud.com |
-| EK | UAT | gcp-ek-uat.cloud.com |
-| HBIO | PROD | gcp-hbioak.cust.com |
+| LBLL | PROD | gcp-lblcsw-sn8633cs.cloud.eu |
+| BRDL | PROD | gcp-brdooiv-p099.cloud.com |
+| HBIL | PROD | gcp-hbi6-prod.cloud.com |
+| WASL | PROD | gcp-wasl5-prod.cloud.com |
+
 
 ---
 
