@@ -1,0 +1,35 @@
+2026-05-19 07:28:32,712 | INFO | Log file created: logs\2026-05-19T07-28-32_HBI_PROD.log
+2026-05-19 07:28:32,713 | INFO | [PREPARE INPUT] invoked
+2026-05-19 07:28:32,713 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 07:28:32,714 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 07:28:32,714 | INFO | [RUN] invoking graph
+2026-05-19 07:28:32,716 | INFO | [NODE] route_model triggered
+2026-05-19 07:28:32,717 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 07:28:32,725 | INFO | [ENV SEARCH] customer=hbi env=PROD host=None
+2026-05-19 07:28:32,726 | INFO | [ENV MATCH FOUND] {'customer_name': 'HBI', 'env': 'PROD', 'host': 'gcp-hbi-prod.cloud.com'}
+2026-05-19 07:28:32,727 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 07:28:32,728 | INFO | [ACCESS ROUTER] continue
+2026-05-19 07:28:32,729 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 07:28:32,730 | INFO | [SELECTED AGENT] service_health_flow
+2026-05-19 07:28:32,731 | INFO | [MATCH FOUND] scripts={'restart_otac_services': 'scripts/services/restart_otac.sh', 'restart_otcs_search': 'scripts/services/restart_otcs_search.sh', 'restart_otcs_services': 'scripts/services/restart_otcs.sh', 'restart_document_generation': 'scripts/services/restart_document_service.sh', 'check_database_connectivity': 'scripts/services/db_connectivity_check.sh'}
+2026-05-19 07:28:32,731 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 07:28:32,732 | INFO | [AGENT ROUTER] service_health_flow
+2026-05-19 07:28:32,734 | INFO | [NODE] login_node START
+2026-05-19 07:28:33,001 | INFO | [LOGIN STATUS] Host=gcp-hbi-prod.cloud.com Success=True
+2026-05-19 07:28:33,002 | INFO | [NODE] login_node END
+2026-05-19 07:28:33,003 | INFO | [NODE] script_executed_node START
+2026-05-19 07:28:33,004 | INFO | [SCRIPTS TO EXECUTE] {'restart_otac_services': 'scripts/services/restart_otac.sh', 'restart_otcs_search': 'scripts/services/restart_otcs_search.sh', 'restart_otcs_services': 'scripts/services/restart_otcs.sh', 'restart_document_generation': 'scripts/services/restart_document_service.sh', 'check_database_connectivity': 'scripts/services/db_connectivity_check.sh'}
+2026-05-19 07:28:33,006 | INFO | [SERVICE HEALTH AGENT] Running checks
+2026-05-19 07:28:33,007 | INFO | [EXECUTING SCRIPT] ScriptNo=1 Container=gcp-hbi-prod.cloud.com Action=restart_otac_services Script=scripts/services/restart_otac.sh
+2026-05-19 07:28:33,274 | INFO | [SCRIPT COMPLETED] ScriptNo=1 Action=restart_otac_services ExitCode=0
+2026-05-19 07:28:33,275 | INFO | [EXECUTING SCRIPT] ScriptNo=2 Container=gcp-hbi-prod.cloud.com Action=restart_otcs_search Script=scripts/services/restart_otcs_search.sh
+2026-05-19 07:28:33,276 | ERROR | [EXECUTION FAILED] ScriptNo=2 Action=restart_otcs_search Error=[Errno 2] No such file or directory: 'scripts/services/restart_otcs_search.sh'
+2026-05-19 07:28:33,277 | INFO | [EXECUTING SCRIPT] ScriptNo=3 Container=gcp-hbi-prod.cloud.com Action=restart_otcs_services Script=scripts/services/restart_otcs.sh
+2026-05-19 07:28:33,277 | ERROR | [EXECUTION FAILED] ScriptNo=3 Action=restart_otcs_services Error=[Errno 2] No such file or directory: 'scripts/services/restart_otcs.sh'
+2026-05-19 07:28:33,278 | INFO | [EXECUTING SCRIPT] ScriptNo=4 Container=gcp-hbi-prod.cloud.com Action=restart_document_generation Script=scripts/services/restart_document_service.sh
+2026-05-19 07:28:33,561 | INFO | [SCRIPT COMPLETED] ScriptNo=4 Action=restart_document_generation ExitCode=0
+2026-05-19 07:28:33,561 | INFO | [EXECUTING SCRIPT] ScriptNo=5 Container=gcp-hbi-prod.cloud.com Action=check_database_connectivity Script=scripts/services/db_connectivity_check.sh
+2026-05-19 07:28:33,815 | INFO | [SCRIPT COMPLETED] ScriptNo=5 Action=check_database_connectivity ExitCode=0
+2026-05-19 07:28:33,816 | INFO | [AGENT OUTPUT] {'restart_otac_services': {'script_no': 1, 'status': 'success', 'container': 'gcp-hbi-prod.cloud.com', 'script': 'scripts/services/restart_otac.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}, 'restart_otcs_search': {'script_no': 2, 'status': 'failed', 'container': 'gcp-hbi-prod.cloud.com', 'script': 'scripts/services/restart_otcs_search.sh', 'error': "[Errno 2] No such file or directory: 'scripts/services/restart_otcs_search.sh'"}, 'restart_otcs_services': {'script_no': 3, 'status': 'failed', 'container': 'gcp-hbi-prod.cloud.com', 'script': 'scripts/services/restart_otcs.sh', 'error': "[Errno 2] No such file or directory: 'scripts/services/restart_otcs.sh'"}, 'restart_document_generation': {'script_no': 4, 'status': 'success', 'container': 'gcp-hbi-prod.cloud.com', 'script': 'scripts/services/restart_document_service.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}, 'check_database_connectivity': {'script_no': 5, 'status': 'success', 'container': 'gcp-hbi-prod.cloud.com', 'script': 'scripts/services/db_connectivity_check.sh', 'stdout': '', 'stderr': 'sh: \n: not found\n', 'return_code': 0}}
+2026-05-19 07:28:33,817 | INFO | [NODE] script_executed_node END
+2026-05-19 07:29:17,082 | INFO | [RUN] Workflow started

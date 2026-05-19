@@ -1,0 +1,17 @@
+2026-05-19 06:20:53,687 | INFO | Log file created: logs\2026-05-19T06-20-53_ICJ1_None.log
+2026-05-19 06:20:53,688 | INFO | [PREPARE INPUT] invoked
+2026-05-19 06:20:53,689 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 06:20:53,689 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 06:20:53,690 | INFO | [RUN] invoking graph
+2026-05-19 06:20:53,707 | INFO | [NODE] route_model triggered
+2026-05-19 06:20:53,709 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 06:20:53,710 | INFO | [ENV SEARCH] customer=icj1 env=None host=None
+2026-05-19 06:20:53,711 | INFO | [ENV MATCH FOUND] {'customer_name': 'ICJ1', 'env': 'PROD', 'host': 'gcp-icj1.cloud.com'}
+2026-05-19 06:20:53,712 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 06:20:53,713 | INFO | [ACCESS ROUTER] continue
+2026-05-19 06:20:53,714 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 06:20:53,715 | INFO | [SELECTED AGENT] application_diagnostics_agent
+2026-05-19 06:20:53,716 | INFO | [MATCH FOUND] scripts={'cleanup_k8s_volume': 'scripts/kubernetes/cleanup_k8s_volume.sh'}
+2026-05-19 06:20:53,716 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 06:20:53,718 | INFO | [AGENT ROUTER] unsupported_alert
+2026-05-19 06:20:53,719 | WARNING | [UNKNOWN NODE]

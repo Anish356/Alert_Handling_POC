@@ -1,152 +1,152 @@
+from pathlib import Path
+from typing import List, Optional
 from langchain.tools import tool
-import subprocess
+from Utility.logger import setup_logger
+
+# =========================================================
+# LOGGER
+# =========================================================
+logger = setup_logger("alert_workflow")
+
+# =========================================================
+# INFRASTRUCTURE DIAGNOSTIC AGENT
+# =========================================================
+@tool
+def infrastructure_diagnostic_flow(scripts,host_name):
+
+    """Perform infrastructure diagnostics"""
+
+    logger.info("[INFRASTRUCTURE AGENT] Running diagnostics")
+
+    output=docker_execution_agent(scripts=scripts,container_name=host_name)
+
+    return output
 
 
-# ==========================================
-# COMMON DOCKER EXECUTOR
-# ==========================================
-def run_docker_command(container_name: str, command: list):
+# =========================================================
+# SERVICE HEALTH AGENT
+# =========================================================
+@tool
+def service_health_flow(scripts,host_name):
+
+    """Perform service health diagnostics"""
+
+    logger.info("[SERVICE HEALTH AGENT] Running checks")
+
+
+    output=docker_execution_agent(scripts=scripts,container_name=host_name)
+
+    return output
+
+
+# =========================================================
+# NETWORK DIAGNOSTICS AGENT
+# =========================================================
+@tool
+def network_diagnostics_flow(scripts,host_name):
+
+    """Perform network diagnostics"""
+
+    logger.info("[NETWORK AGENT] Running diagnostics")
+
+
+    output=docker_execution_agent(scripts=scripts,container_name=host_name)
+
+    return output
+
+
+# =========================================================
+# APPLICATION DIAGNOSTICS AGENT
+# =========================================================
+@tool
+def application_diagnostics_flow(scripts,host_name):
+
+    """Perform application diagnostics"""
+
+    logger.info("[APPLICATION AGENT] Running diagnostics")
+
+
+    output=docker_execution_agent(scripts=scripts,container_name=host_name)
+
+    return output
+
+
+# =========================================================
+# DOCKER EXECUTION AGENT
+# =========================================================
+def docker_execution_agent(scripts: dict, container_name: str ):
+
     """
-    Generic Docker command runner
+    Execute multiple local shell scripts inside Docker container
     """
 
-    if not container_name:
-        return {
-            "status": "failed",
-            "error": "container_name is required"
-        }
+    import subprocess
 
-    full_command = ["docker", "exec", container_name] + command
+    results = {}
 
-    print(f"\n[DOCKER EXEC] Running: {' '.join(full_command)}")
+    for script_no, (action, script_path) in enumerate(scripts.items(), start=1):
 
-    try:
-
-        result = subprocess.run(
-            full_command,
-            capture_output=True,
-            text=True,
-            timeout=10
+        logger.info(
+            f"[EXECUTING SCRIPT] "
+            f"ScriptNo={script_no} "
+            f"Container={container_name} "
+            f"Action={action} "
+            f"Script={script_path}"
         )
 
-        # Command failed
-        if result.returncode != 0:
+        try:
 
-            return {
+            with open(script_path, "r", encoding="utf-8", newline=None) as file:
+                script_content = file.read()
+
+            script_content = script_content.replace("\r\n", "\n").replace("\r", "\n")
+
+            result = subprocess.run(
+                [
+                    "docker",
+                    "exec",
+                    "-i",
+                    container_name,
+                    "sh",
+                    "-s"
+                ],
+                input=script_content,
+                capture_output=True,
+                text=True
+            )
+
+            results[action] = {
+                "script_no": script_no,
+                "status": "success" if result.returncode == 0 else "failed",
                 "container": container_name,
-                "status": "failed",
-                "error": result.stderr.strip()
+                "script": script_path,
+                "stdout": result.stdout,
+                "stderr": result.stderr,
+                "return_code": result.returncode
             }
 
-        # Command success
-        return {
-            "container": container_name,
-            "status": "success",
-            "output": result.stdout.strip()
-        }
+            logger.info(
+                f"[SCRIPT COMPLETED] "
+                f"ScriptNo={script_no} "
+                f"Action={action} "
+                f"ExitCode={result.returncode}"
+            )
 
-    except subprocess.TimeoutExpired:
+        except Exception as e:
 
-        return {
-            "container": container_name,
-            "status": "failed",
-            "error": "Command timed out"
-        }
+            logger.error(
+                f"[EXECUTION FAILED] "
+                f"ScriptNo={script_no} "
+                f"Action={action} "
+                f"Error={e}"
+            )
 
-    except Exception as e:
+            results[action] = {
+                "script_no": script_no,
+                "status": "failed",
+                "container": container_name,
+                "script": script_path,
+                "error": str(e)
+            }
 
-        return {
-            "container": container_name,
-            "status": "failed",
-            "error": str(e)
-        }
-
-
-# ==========================================
-# MEMORY TOOL
-# ==========================================
-@tool
-def memory_check(container_name: str):
-    """
-    Check memory usage inside Docker container
-    """
-
-    return run_docker_command(
-        container_name,
-        ["free", "-h"]
-    )
-
-
-# ==========================================
-# CPU TOOL
-# ==========================================
-@tool
-def cpu_check(container_name: str):
-    """
-    Check CPU usage inside Docker container
-    """
-
-    return run_docker_command(
-        container_name,
-        ["top", "-b", "-n", "1"]
-    )
-
-
-# ==========================================
-# ENTER CONTAINER TOOL
-# ==========================================
-@tool
-def enter_container(container_name: str):
-    """
-    Verify Docker container access using whoami
-    """
-
-    result = run_docker_command(
-        container_name,
-        ["whoami"]
-    )
-
-    # Customize response
-    if result["status"] == "success":
-
-        return {
-            "container": container_name,
-            "user": result["output"],
-            "status": "connected"
-        }
-
-    return {
-        "container": container_name,
-        "status": "failed",
-        "error": result["error"]
-    }
-
-
-# ==========================================
-# DISK TOOL (OPTIONAL)
-# ==========================================
-@tool
-def disk_check(container_name: str):
-    """
-    Check disk usage inside Docker container
-    """
-
-    return run_docker_command(
-        container_name,
-        ["df", "-h"]
-    )
-
-
-# ==========================================
-# PROCESS TOOL (OPTIONAL)
-# ==========================================
-@tool
-def process_check(container_name: str):
-    """
-    Check running processes inside Docker container
-    """
-
-    return run_docker_command(
-        container_name,
-        ["ps", "-ef"]
-    )
+    return results

@@ -1,0 +1,27 @@
+2026-05-19 07:29:17,084 | INFO | Log file created: logs\2026-05-19T07-29-17_ITFX_PROD.log
+2026-05-19 07:29:17,085 | INFO | [PREPARE INPUT] invoked
+2026-05-19 07:29:17,085 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 07:29:17,086 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 07:29:17,086 | INFO | [RUN] invoking graph
+2026-05-19 07:29:17,088 | INFO | [NODE] route_model triggered
+2026-05-19 07:29:17,089 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 07:29:17,096 | INFO | [ENV SEARCH] customer=itfx env=PROD host=None
+2026-05-19 07:29:17,097 | INFO | [ENV MATCH FOUND] {'customer_name': 'ITFX', 'env': 'PROD', 'host': 'gcp-itfx-prod.cloud.com'}
+2026-05-19 07:29:17,098 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 07:29:17,098 | INFO | [ACCESS ROUTER] continue
+2026-05-19 07:29:17,100 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 07:29:17,100 | INFO | [SELECTED AGENT] network_diagnostics_flow
+2026-05-19 07:29:17,101 | INFO | [MATCH FOUND] scripts={'check_gateway_connectivity': 'scripts/network/gateway_ping_check.sh'}
+2026-05-19 07:29:17,101 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 07:29:17,102 | INFO | [AGENT ROUTER] network_diagnostics_flow
+2026-05-19 07:29:17,104 | INFO | [NODE] login_node START
+2026-05-19 07:29:17,390 | INFO | [LOGIN STATUS] Host=gcp-itfx-prod.cloud.com Success=True
+2026-05-19 07:29:17,390 | INFO | [NODE] login_node END
+2026-05-19 07:29:17,393 | INFO | [NODE] script_executed_node START
+2026-05-19 07:29:17,394 | INFO | [SCRIPTS TO EXECUTE] {'check_gateway_connectivity': 'scripts/network/gateway_ping_check.sh'}
+2026-05-19 07:29:17,396 | INFO | [NETWORK AGENT] Running diagnostics
+2026-05-19 07:29:17,396 | INFO | [EXECUTING SCRIPT] ScriptNo=1 Container=gcp-itfx-prod.cloud.com Action=check_gateway_connectivity Script=scripts/network/gateway_ping_check.sh
+2026-05-19 07:29:17,699 | INFO | [SCRIPT COMPLETED] ScriptNo=1 Action=check_gateway_connectivity ExitCode=0
+2026-05-19 07:29:17,700 | INFO | [AGENT OUTPUT] {'check_gateway_connectivity': {'script_no': 1, 'status': 'success', 'container': 'gcp-itfx-prod.cloud.com', 'script': 'scripts/network/gateway_ping_check.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}}
+2026-05-19 07:29:17,700 | INFO | [NODE] script_executed_node END
+2026-05-19 07:29:59,895 | INFO | [RUN] Workflow started

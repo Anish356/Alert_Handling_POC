@@ -1,0 +1,17 @@
+2026-05-19 06:26:07,006 | INFO | Log file created: logs\2026-05-19T06-26-07_gcp-lblcsw-sn86cs_cloud_eu.log
+2026-05-19 06:26:07,007 | INFO | [PREPARE INPUT] invoked
+2026-05-19 06:26:07,007 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 06:26:07,008 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 06:26:07,008 | INFO | [RUN] invoking graph
+2026-05-19 06:26:07,013 | INFO | [NODE] route_model triggered
+2026-05-19 06:26:07,014 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 06:26:07,021 | INFO | [ENV SEARCH] customer=lbl env=None host=gcp-lblcsw-sn86cs.cloud.eu
+2026-05-19 06:26:07,022 | INFO | [ENV MATCH FOUND] {'customer_name': 'LBL', 'env': 'PROD', 'host': 'gcp-lblcsw-sn86cs.cloud.eu'}
+2026-05-19 06:26:07,023 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 06:26:07,023 | INFO | [ACCESS ROUTER] continue
+2026-05-19 06:26:07,024 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 06:26:07,025 | INFO | [SELECTED AGENT] infrastructure_diagnostic_agent
+2026-05-19 06:26:07,026 | INFO | [MATCH FOUND] scripts={'check_memory_utilization': 'scripts/infrastructure/check_memory.sh', 'cleanup_disk_space': 'scripts/infrastructure/disk_cleanup.sh'}
+2026-05-19 06:26:07,026 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 06:26:07,027 | INFO | [AGENT ROUTER] unsupported_alert
+2026-05-19 06:26:07,028 | WARNING | [UNKNOWN NODE]

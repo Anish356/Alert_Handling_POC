@@ -1,0 +1,77 @@
+[
+  {
+    "customer_name": "LBL",
+    "env": "PROD",
+    "host": "gcp-lblcsw-sn86cs.cloud.eu"
+  },
+  {
+    "customer_name": "BRD",
+    "env": "PROD",
+    "host": "gcp-brdooiv-p08.cloud.com"
+  },
+  {
+    "customer_name": "HBI",
+    "env": "PROD",
+    "host": "gcp-hbi-prod.cloud.com"
+  },
+  {
+    "customer_name": "WASL",
+    "env": "PROD",
+    "host": "gcp-wasl-prod.cloud.com"
+  },
+  {
+    "customer_name": "BAMC",
+    "env": "PROD",
+    "host": "gcp-bamc-prod.cloud.com"
+  },
+  {
+    "customer_name": "SJ29",
+    "env": "PROD",
+    "host": "syg-sj29cib.cloud.com"
+  },
+  {
+    "customer_name": "ITFX",
+    "env": "PROD",
+    "host": "gcp-itfx-prod.cloud.com"
+  },
+  {
+    "customer_name": "BLDO",
+    "env": "PROD",
+    "host": "gcp-bldoak.cust.com"
+  },
+  {
+    "customer_name": "ICJ1",
+    "env": "PROD",
+    "host": "gcp-icj1.cloud.com"
+  },
+  {
+    "customer_name": "G020",
+    "env": "PROD",
+    "host": "gcp-g020.cloud.com"
+  },
+  {
+    "customer_name": "EK",
+    "env": "PROD",
+    "host": "gcp-ek3csw-sn86cs.cloud.eu"
+  },
+  {
+    "customer_name": "EK",
+    "env": "UAT",
+    "host": "gcp-ek-uat.cloud.com"
+  },
+  {
+    "customer_name": "EK",
+    "env": "PROD",
+    "host": "gcp-ek-default.cloud.com"
+  },
+  {
+    "customer_name": "HBIO",
+    "env": "PROD",
+    "host": "gcp-hbioak.cust.com"
+  },
+  {
+    "customer_name": "EK",
+    "env": "PROD",
+    "host": "gcp-ek-prod.cloud.com"
+  }
+]

@@ -1,0 +1,11 @@
+2026-05-13 19:44:56,790 | INFO | Log file created: logs\2026-05-13T19-44-56_EK_None.log
+2026-05-13 19:44:56,790 | INFO | Running workflow
+2026-05-13 19:44:56,793 | INFO | [ROUTE NODE]
+2026-05-13 19:44:56,793 | INFO | Received agent route: Type6_critical_escalation_agent
+2026-05-13 19:44:56,794 | INFO | [VALIDATE CUSTOMER NODE]
+2026-05-13 19:44:56,794 | ERROR | Customer validation failed
+Traceback (most recent call last):
+  File "c:\Users\ayadav3\Desktop\ML\Langraph\AgentWorkflow.py", line 131, in validate_customer_node
+    with open("/config/env_config.json","r") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/config/env_config.json'

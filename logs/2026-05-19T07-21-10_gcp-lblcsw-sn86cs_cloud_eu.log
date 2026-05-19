@@ -1,0 +1,17 @@
+2026-05-19 07:21:10,243 | INFO | Log file created: logs\2026-05-19T07-21-10_gcp-lblcsw-sn86cs_cloud_eu.log
+2026-05-19 07:21:10,244 | INFO | [PREPARE INPUT] invoked
+2026-05-19 07:21:10,245 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 07:21:10,245 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 07:21:10,246 | INFO | [RUN] invoking graph
+2026-05-19 07:21:10,251 | INFO | [NODE] route_model triggered
+2026-05-19 07:21:10,253 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 07:21:10,253 | INFO | [ENV SEARCH] customer=lbl env=None host=gcp-lblcsw-sn86cs.cloud.eu
+2026-05-19 07:21:10,254 | INFO | [ENV MATCH FOUND] {'customer_name': 'LBL', 'env': 'PROD', 'host': 'gcp-lblcsw-sn86cs.cloud.eu'}
+2026-05-19 07:21:10,255 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 07:21:10,255 | INFO | [ACCESS ROUTER] continue
+2026-05-19 07:21:10,257 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 07:21:10,257 | INFO | [SELECTED AGENT] infrastructure_diagnostic_agent
+2026-05-19 07:21:10,258 | WARNING | [NO MATCH] agent=infrastructure_diagnostic_agent
+2026-05-19 07:21:10,259 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 07:21:10,260 | INFO | [AGENT ROUTER] unsupported_alert
+2026-05-19 07:21:10,261 | WARNING | [UNKNOWN NODE]

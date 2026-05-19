@@ -1,0 +1,29 @@
+2026-05-19 11:55:57,367 | INFO | Log file created: logs\2026-05-19T11-55-57_gcp-lblcsw-sn86cs_cloud_eu.log
+2026-05-19 11:55:57,367 | INFO | [PREPARE INPUT] invoked
+2026-05-19 11:55:57,367 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 11:55:57,367 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 11:55:57,368 | INFO | [RUN] invoking graph
+2026-05-19 11:55:57,374 | INFO | [NODE] route_model triggered
+2026-05-19 11:55:57,375 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 11:55:57,381 | INFO | [ENV SEARCH] customer=lbl env=None host=gcp-lblcsw-sn86cs.cloud.eu
+2026-05-19 11:55:57,382 | INFO | [ENV MATCH FOUND] {'customer_name': 'LBL', 'env': 'PROD', 'host': 'gcp-lblcsw-sn86cs.cloud.eu'}
+2026-05-19 11:55:57,382 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 11:55:57,382 | INFO | [ACCESS ROUTER] continue
+2026-05-19 11:55:57,383 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 11:55:57,383 | INFO | [SELECTED AGENT] infrastructure_diagnostic_flow
+2026-05-19 11:55:57,384 | INFO | [MATCH FOUND] scripts={'check_memory_utilization': 'scripts/infrastructure/check_memory.sh', 'cleanup_disk_space': 'scripts/infrastructure/disk_cleanup.sh'}
+2026-05-19 11:55:57,384 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 11:55:57,384 | INFO | [AGENT ROUTER] infrastructure_diagnostic_flow
+2026-05-19 11:55:57,386 | INFO | [NODE] login_node START
+2026-05-19 11:55:57,525 | INFO | [LOGIN STATUS] Host=gcp-lblcsw-sn86cs.cloud.eu Success=True
+2026-05-19 11:55:57,525 | INFO | [NODE] login_node END
+2026-05-19 11:55:57,526 | INFO | [NODE] script_executed_node START
+2026-05-19 11:55:57,526 | INFO | [SCRIPTS TO EXECUTE] {'check_memory_utilization': 'scripts/infrastructure/check_memory.sh', 'cleanup_disk_space': 'scripts/infrastructure/disk_cleanup.sh'}
+2026-05-19 11:55:57,527 | INFO | [INFRASTRUCTURE AGENT] Running diagnostics
+2026-05-19 11:55:57,527 | INFO | [EXECUTING SCRIPT] ScriptNo=1 Container=gcp-lblcsw-sn86cs.cloud.eu Action=check_memory_utilization Script=scripts/infrastructure/check_memory.sh
+2026-05-19 11:55:57,689 | INFO | [SCRIPT COMPLETED] ScriptNo=1 Action=check_memory_utilization ExitCode=0
+2026-05-19 11:55:57,689 | INFO | [EXECUTING SCRIPT] ScriptNo=2 Container=gcp-lblcsw-sn86cs.cloud.eu Action=cleanup_disk_space Script=scripts/infrastructure/disk_cleanup.sh
+2026-05-19 11:55:57,849 | INFO | [SCRIPT COMPLETED] ScriptNo=2 Action=cleanup_disk_space ExitCode=0
+2026-05-19 11:55:57,849 | INFO | [AGENT OUTPUT] {'check_memory_utilization': {'script_no': 1, 'status': 'success', 'container': 'gcp-lblcsw-sn86cs.cloud.eu', 'script': 'scripts/infrastructure/check_memory.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}, 'cleanup_disk_space': {'script_no': 2, 'status': 'success', 'container': 'gcp-lblcsw-sn86cs.cloud.eu', 'script': 'scripts/infrastructure/disk_cleanup.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}}
+2026-05-19 11:55:57,850 | INFO | [NODE] script_executed_node END
+2026-05-19 11:56:47,042 | INFO | [RUN] Workflow started

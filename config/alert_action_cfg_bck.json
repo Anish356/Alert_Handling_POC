@@ -1,0 +1,48 @@
+[
+  {
+    "agent": "infrastructure_diagnostic_agent",
+    "action": "check_memory_utilization",
+    "script_path": "scripts/infrastructure/check_memory.sh"
+  },
+  {
+    "agent": "infrastructure_diagnostic_agent",
+    "action": "cleanup_disk_space",
+    "script_path": "scripts/infrastructure/disk_cleanup.sh"
+  },
+  {
+    "agent": "service_health_agent",
+    "action": "restart_otac_services",
+    "script_path": "scripts/services/restart_otac.sh"
+  },
+  {
+    "agent": "service_health_agent",
+    "action": "restart_otcs_search",
+    "script_path": "scripts/services/restart_otcs_search.sh"
+  },
+  {
+    "agent": "service_health_agent",
+    "action": "restart_otcs_services",
+    "script_path": "scripts/services/restart_otcs.sh"
+  },
+  {
+    "agent": "network_diagnostics_agent",
+    "action": "check_gateway_connectivity",
+    "script_path": "scripts/network/gateway_ping_check.sh"
+  },
+
+  {
+    "agent": "application_diagnostics_agent",
+    "action": "cleanup_k8s_volume",
+    "script_path": "scripts/kubernetes/cleanup_k8s_volume.sh"
+  },
+  {
+    "agent": "service_health_agent",
+    "action": "restart_document_generation",
+    "script_path": "scripts/services/restart_document_service.sh"
+  },
+  {
+    "agent": "service_health_agent",
+    "action": "check_database_connectivity",
+    "script_path": "scripts/services/db_connectivity_check.sh"
+  }
+]

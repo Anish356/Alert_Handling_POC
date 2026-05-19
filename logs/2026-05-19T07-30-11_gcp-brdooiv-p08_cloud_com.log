@@ -1,0 +1,17 @@
+2026-05-19 07:30:11,859 | INFO | Log file created: logs\2026-05-19T07-30-11_gcp-brdooiv-p08_cloud_com.log
+2026-05-19 07:30:11,860 | INFO | [PREPARE INPUT] invoked
+2026-05-19 07:30:11,860 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 07:30:11,861 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 07:30:11,861 | INFO | [RUN] invoking graph
+2026-05-19 07:30:11,864 | INFO | [NODE] route_model triggered
+2026-05-19 07:30:11,866 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 07:30:11,873 | INFO | [ENV SEARCH] customer=brd env=None host=gcp-brdooiv-p08.cloud.com
+2026-05-19 07:30:11,874 | INFO | [ENV MATCH FOUND] {'customer_name': 'BRD', 'env': 'PROD', 'host': 'gcp-brdooiv-p08.cloud.com'}
+2026-05-19 07:30:11,875 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 07:30:11,876 | INFO | [ACCESS ROUTER] continue
+2026-05-19 07:30:11,877 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 07:30:11,877 | INFO | [SELECTED AGENT] Type1_critical_escalation_flow
+2026-05-19 07:30:11,878 | WARNING | [NO MATCH] agent=Type1_critical_escalation_flow
+2026-05-19 07:30:11,879 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 07:30:11,879 | INFO | [AGENT ROUTER] unsupported_alert
+2026-05-19 07:30:11,880 | WARNING | [UNKNOWN NODE]

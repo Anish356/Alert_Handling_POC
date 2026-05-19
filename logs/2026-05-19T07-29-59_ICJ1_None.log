@@ -1,0 +1,27 @@
+2026-05-19 07:29:59,897 | INFO | Log file created: logs\2026-05-19T07-29-59_ICJ1_None.log
+2026-05-19 07:29:59,898 | INFO | [PREPARE INPUT] invoked
+2026-05-19 07:29:59,898 | INFO | [NORMALIZE INPUT] Start
+2026-05-19 07:29:59,899 | INFO | [NORMALIZE INPUT] Done | keys=['data', 'agent_route', 'error', 'warnings', 'access_verified', 'remediation_status', 'execution_log']
+2026-05-19 07:29:59,899 | INFO | [RUN] invoking graph
+2026-05-19 07:29:59,901 | INFO | [NODE] route_model triggered
+2026-05-19 07:29:59,901 | INFO | [NODE] fetch_environment_details_node START
+2026-05-19 07:29:59,908 | INFO | [ENV SEARCH] customer=icj1 env=None host=None
+2026-05-19 07:29:59,909 | INFO | [ENV MATCH FOUND] {'customer_name': 'ICJ1', 'env': 'PROD', 'host': 'gcp-icj1.cloud.com'}
+2026-05-19 07:29:59,910 | INFO | [NODE] fetch_environment_details_node END
+2026-05-19 07:29:59,911 | INFO | [ACCESS ROUTER] continue
+2026-05-19 07:29:59,912 | INFO | [NODE] identify_alert_action_node START
+2026-05-19 07:29:59,912 | INFO | [SELECTED AGENT] application_diagnostics_flow
+2026-05-19 07:29:59,913 | INFO | [MATCH FOUND] scripts={'cleanup_k8s_volume': 'scripts/kubernetes/cleanup_k8s_volume.sh'}
+2026-05-19 07:29:59,913 | INFO | [NODE] identify_alert_action_node END
+2026-05-19 07:29:59,914 | INFO | [AGENT ROUTER] application_diagnostics_flow
+2026-05-19 07:29:59,915 | INFO | [NODE] login_node START
+2026-05-19 07:30:00,156 | INFO | [LOGIN STATUS] Host=gcp-icj1.cloud.com Success=True
+2026-05-19 07:30:00,157 | INFO | [NODE] login_node END
+2026-05-19 07:30:00,158 | INFO | [NODE] script_executed_node START
+2026-05-19 07:30:00,158 | INFO | [SCRIPTS TO EXECUTE] {'cleanup_k8s_volume': 'scripts/kubernetes/cleanup_k8s_volume.sh'}
+2026-05-19 07:30:00,160 | INFO | [APPLICATION AGENT] Running diagnostics
+2026-05-19 07:30:00,160 | INFO | [EXECUTING SCRIPT] ScriptNo=1 Container=gcp-icj1.cloud.com Action=cleanup_k8s_volume Script=scripts/kubernetes/cleanup_k8s_volume.sh
+2026-05-19 07:30:00,437 | INFO | [SCRIPT COMPLETED] ScriptNo=1 Action=cleanup_k8s_volume ExitCode=0
+2026-05-19 07:30:00,438 | INFO | [AGENT OUTPUT] {'cleanup_k8s_volume': {'script_no': 1, 'status': 'success', 'container': 'gcp-icj1.cloud.com', 'script': 'scripts/kubernetes/cleanup_k8s_volume.sh', 'stdout': '', 'stderr': 'sh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\nsh: \n: not found\n', 'return_code': 0}}
+2026-05-19 07:30:00,439 | INFO | [NODE] script_executed_node END
+2026-05-19 07:30:11,855 | INFO | [RUN] Workflow started
